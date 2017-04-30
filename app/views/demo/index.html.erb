@@ -1,9 +1,10 @@
 <h1>Demo#index</h1>
 <p>Find me in app/views/demo/index.html.erb</p>
 <%= 1+1 %>
-<% target = "world" %> <br />
+<% target = "world" %> 
+<br />
 <%= "Hello #{target}" %>
 <br />
-<% 3.times do |n| %>
+<% @array.each do |n| %>
 	<%= n %> <br />
 <% end %>
