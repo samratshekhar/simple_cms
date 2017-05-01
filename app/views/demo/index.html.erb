@@ -8,3 +8,10 @@
 <% @array.each do |n| %>
 	<%= n %> <br />
 <% end %>
+<br />
+
+Id : <%= @id %> <br />
+Id : <%= params[:id] %><br />
+Page : <%= @page %><br />
+Page : <%= params['page'] %><br />
+Next Page : <%= @page.to_i + 1 %>

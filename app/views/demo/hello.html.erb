@@ -4,3 +4,5 @@
 <a href="/demo/index">index1</a> <br />
 
 <%= link_to("index2", {:controller => "demo", :action => "index" }) %>
+<br />
+<%= link_to("index with url params", {:controller => "demo", :action => "index", :page => 5, :id => 20}) %>
