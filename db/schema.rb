@@ -24,30 +24,35 @@ ActiveRecord::Schema.define(version: 20170504180335) do
   end
 
   create_table "pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name",       limit: 200
+    t.integer  "subject_id"
+    t.string   "name"
     t.integer  "permalink"
     t.integer  "position"
-    t.boolean  "visible",                default: true
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.boolean  "visible",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["permalink"], name: "index_pages_on_permalink", using: :btree
+    t.index ["subject_id"], name: "index_pages_on_subject_id", using: :btree
   end
 
   create_table "sections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "page_id"
     t.string   "name"
     t.integer  "position"
-    t.boolean  "visible",                    default: true
+    t.boolean  "visible",                    default: false
     t.string   "content_type"
     t.text     "content",      limit: 65535
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.index ["page_id"], name: "index_sections_on_page_id", using: :btree
   end
 
   create_table "subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name",       limit: 100
+    t.string   "name"
     t.integer  "position"
-    t.boolean  "visible",                default: true
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.boolean  "visible",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end
